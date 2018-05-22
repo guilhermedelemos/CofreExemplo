@@ -40,18 +40,8 @@ public class TravadoSteps {
         cofrePM.ok();
     }
 
-    @Then("^o display deve mostrar a mensagem para senha invalida \"([^\"]*)\"$")
-    public void o_display_deve_mostrar_a_mensagem_para_senha_invalida(String arg1) throws Exception {
-        assertEquals("senha errada. Tente novamente", cofrePM.getDisplay());
-    }
-
-    @Then("^o display deve mostrar a mensagem para senha menor do que seis caracteres \"([^\"]*)\"$")
-    public void o_display_deve_mostrar_a_mensagem_para_senha_menor_do_que_seis_caracteres(String arg1) throws Exception {
-        assertEquals("senha errada. Tente novamente", cofrePM.getDisplay());
-    }
-
-    @Then("^o display deve mostrar a mensagem para senha valida \"([^\"]*)\"$")
-    public void o_display_deve_mostrar_a_mensagem_para_senha_valida(String arg1) throws Exception {
-        assertEquals("senha correta. Cofre aberto", cofrePM.getDisplay());
+    @Then("^o display deve mostrar a mensagem de \"([^\"]*)\"$")
+    public void o_display_deve_mostrar_a_mensagem_de(String arg1) throws Exception {
+        assertEquals(arg1, cofrePM.getDisplay());
     }
 }
