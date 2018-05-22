@@ -25,7 +25,7 @@ Feature: Travado
     And entrei com 2
     And entrei com 3
     And entrei com 4
-    And entrei com 6
+    And entrei com 5
     And entrei com 6
     When eu pressionei ok
     Then o display deve mostrar a mensagem para senha valida "senha correta. Cofre aberto"
