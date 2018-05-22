@@ -7,18 +7,18 @@ Feature: Destravado
   Scenario: limpar display
     Given que eu entrei com o numero 1
     And entrei com o numero 2
-    When eu pressionei o botao ok
-    Then o display deve mostrar uma mensagem vazia ""
+    When eu pressionei o botao clear
+    Then o display deve mostrar a mensagem ""
 
-  Scenario: porta nao fechada
-    Given que eu entrei com o numero 1
+  Scenario: porta aberta
+    Given que eu entrei com o numero 1 com a porta aberta
     When a porta esta aberta
-    Then o display deve mostrar a mensagem de porta aberta "Feche a porta antes de digitar a senha"
+    Then o display deve mostrar a mensagem "Feche a porta antes de digitar a senha"
 
   Scenario: digitar um numero com a porta fechada
-    Given que eu entrei com o numero 0
-    When a porta esta fechada
-    Then o display deve mostrar o numero "0"
+    Given que eu entrei com o numero 0 com a porta fechada
+    When eu olhar para o display
+    Then o display deve mostrar a mensagem "0"
 
   Scenario: gravar senha valida porta fechada destravada
     Given que eu entrei com o numero 6
@@ -28,35 +28,15 @@ Feature: Destravado
     And entrei com o numero 2
     And entrei com o numero 1
     When eu pressionei o botao ok
-    Then o display deve mostrar a mensagem de sucesso "Senha salva. Cofre trancado"
+    Then o display deve mostrar a mensagem "Senha salva. Cofre trancado"
 
   Scenario: digitar senha com menos de seis digitos
-    Given que eu entrei com o numero 6
+    Given que eu entrei com o numero 6 em um display vazio
     And entrei com o numero 5
     When eu pressionei o botao ok
-    Then o display deve mostrar a mensagem de erro de senha pequena "senha precisa de 6 digitos. Tente novamente"
+    Then o display deve mostrar a mensagem "senha precisa de 6 digitos. Tente novamente"
 
-  Scenario: digitar senha errada
-    Given que eu entrei com o numero 6
-    And entrei com o numero 5
-    And entrei com o numero 4
-    And entrei com o numero 3
-    And entrei com o numero 2
-    And entrei com o numero 2
-    When eu pressionei o botao ok
-    Then o display deve mostrar a mensagem de erro de senha pequena "senha errada. Tente novamente"
-
-  Scenario: digitar senha errada
-    Given que eu entrei com o numero 6
-    And entrei com o numero 5
-    And entrei com o numero 4
-    And entrei com o numero 3
-    And entrei com o numero 2
-    And entrei com o numero 2
-    When eu pressionei o botao ok
-    Then o display deve mostrar a mensagem de erro de senha pequena "senha errada. Tente novamente"
-
-  Scenario: digitar numeros porta fechada e depois abrir e digitar
-    Given que eu entrei com o numero 654321 e 65
-    When eu pressionei o botao ok
-    Then o display deve mostrar os numeros digitados "65"
+    Scenario: digitar numeros porta fechada e depois abrir e digitar
+    Given que eu entrei com o numero 6 e 7
+    When eu olhar para o display
+    Then o display deve mostrar a mensagem "7"
